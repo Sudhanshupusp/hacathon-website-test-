@@ -1,4 +1,4 @@
-# UCET Hacks 2025 | Utpattithon Website
+# UCET Hacks 2025 | Ucet Hacks 2025 Website
 
 A clean, responsive, and animated landing page for the **UCET Hacks 2025** hackathon event organized by **UCET VBU**.
 

@@ -4,7 +4,7 @@ A clean, responsive, and animated landing page for the **UCET Hacks 2025** hacka
 
 ## 🌐 Live Preview
 
-> Add your deployment link here once hosted (e.g., GitHub Pages, Vercel, Netlify)
+> https://abhi12pandey.github.io/hacathon-website-test-/
 
 ---
 

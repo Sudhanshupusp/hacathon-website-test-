@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackFest 2025 - Registration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #1a1a2e 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 255, 255, 0.03) 2px,
+                    rgba(255, 255, 255, 0.03) 4px);
+            animation: move 20s linear infinite;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            color: #ffffff;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-container {
+            padding: 40px 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .form-group:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .form-group:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .form-group:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .form-group:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .form-group:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .form-group:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .form-group:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .form-group:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #000000;
+            font-size: 0.95em;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(88, 58, 58, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(122, 33, 255, 0.699) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.084) 0%, transparent 50%);
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+            transform: scale(1.2);
+        }
+
+        .checkbox-group label {
+            margin-bottom: 0;
+            font-weight: 400;
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-item input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .skill-item label {
+            margin: 0;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .container {
+                margin: 10px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #c3e6cb;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 HackFest 2025</h1>
+            <p>Join us for 48 hours of innovation, collaboration, and coding excellence</p>
+        </div>
+
+        <div class="form-container">
+            <div class="success-message" id="successMessage">
+                Registration submitted successfully! We'll contact you with more details soon.
+            </div>
+
+            <form id="registrationForm" method="post" name="Registeration-Form" action="">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name <span class="required">*</span></label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age <span class="required">*</span></label>
+                        <input type="number" id="age" name="age" min="13" max="99" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="school">School/University</label>
+                        <input type="text" id="school" name="school">
+                    </div>
+                    <div class="form-group">
+                        <label for="graduationYear">Graduation Year</label>
+                        <input type="number" id="graduationYear" name="graduationYear" min="2020" max="2030">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="experience">Programming Experience <span class="required">*</span></label>
+                    <select id="experience" name="experience" required>
+                        <option value="">Select your experience level</option>
+                        <option value="beginner">Beginner (0-1 years)</option>
+                        <option value="intermediate">Intermediate (2-3 years)</option>
+                        <option value="advanced">Advanced (4+ years)</option>
+                        <option value="expert">Expert (Professional developer)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Technical Skills (Select all that apply)</label>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <input type="checkbox" id="javascript" name="skills" value="javascript">
+                            <label for="javascript">JavaScript</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox" id="python" name="skills" value="python">
+                            <label for="python">Python</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox" id="java" name="skills" value="java">
+                            <label for="java">Java</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox" id="cpp" name="skills" value="cpp">
+                            <label for="cpp">C++</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox" id="react" name="skills" value="react">
+                            <label for="react">React</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox" id="nodejs" name="skills" value="nodejs">
+                            <label for="nodejs">Node.js</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox" id="mobile" name="skills" value="mobile">
+                            <label for="mobile">Mobile Development</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox" id="ai" name="skills" value="ai">
+                            <label for="ai">AI/Machine Learning</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox" id="design" name="skills" value="design">
+                            <label for="design">UI/UX Design</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox" id="blockchain" name="skills" value="blockchain">
+                            <label for="blockchain">Blockchain</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="teamPreference">Team Preference</label>
+                    <select id="teamPreference" name="teamPreference">
+                        <option value="">Select preference</option>
+                        <option value="solo">Work solo</option>
+                        <option value="find-team">Looking for a team</option>
+                        <option value="have-team">Already have a team</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="interests">Project Interests</label>
+                    <textarea id="interests" name="interests"
+                        placeholder="What type of projects are you interested in building? (e.g., web apps, mobile apps, AI tools, games, etc.)"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="motivation">Why do you want to participate? <span class="required">*</span></label>
+                    <textarea id="motivation" name="motivation"
+                        placeholder="Tell us what motivates you to join this hackathon..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="dietary">Dietary Restrictions/Allergies</label>
+                    <input type="text" id="dietary" name="dietary"
+                        placeholder="Please specify any dietary restrictions or allergies">
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I agree to the <a href="#" style="color: #667eea;">Terms and Conditions</a>
+                            and <a href="#" style="color: #667eea;">Code of Conduct</a> <span
+                                class="required">*</span></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        <label for="newsletter">Subscribe to our newsletter for future hackathon updates</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Register for HackFest 2025
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbz2Log-c5_Ji2boxYN2JAzU1ReAF1WtA-kE0s_tZvZ4Wvbowi-EXzkHO8PNihLSTnY/exec'
+
+        const form = document.forms['Registeration-Form']
+
+
+        form.addEventListener('submit', e => {
+
+            e.preventDefault()
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => alert("Thank you! Form is submitted"))
+                .then(() => { window.location.reload(); })
+                .catch(error => console.error('Error!', error.message))
+
+            // Collect form data
+            const formData = new FormData(this);
+            const registrationData = {};
+
+            // Handle regular form fields
+            for (let [key, value] of formData.entries()) {
+                if (key === 'skills') {
+                    if (!registrationData.skills) {
+                        registrationData.skills = [];
+                    }
+                    registrationData.skills.push(value);
+                } else {
+                    registrationData[key] = value;
+                }
+            }
+
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+
+            // In a real application, you would send this data to your server
+            console.log('Registration Data:', registrationData);
+
+            // Reset form after a delay
+            setTimeout(() => {
+                this.reset();
+                document.getElementById('successMessage').style.display = 'none';
+            }, 3000);
+        });
+
+        // Add smooth animations on input focus
+        const inputs = document.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function () {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+
+            input.addEventListener('blur', function () {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+
+        // Dynamic skill validation
+        const skillCheckboxes = document.querySelectorAll('input[name="skills"]');
+        const experienceSelect = document.getElementById('experience');
+
+        experienceSelect.addEventListener('change', function () {
+            if (this.value === 'beginner') {
+                // Suggest basic skills for beginners
+                const basicSkills = ['javascript', 'python', 'design'];
+                skillCheckboxes.forEach(checkbox => {
+                    if (basicSkills.includes(checkbox.value)) {
+                        checkbox.parentElement.style.background = 'rgba(102, 126, 234, 0.1)';
+                        checkbox.parentElement.style.borderRadius = '8px';
+                        checkbox.parentElement.style.padding = '5px';
+                    }
+                });
+            }
+        });
+
+    </script>
+</body>
+
+</html>
